@@ -13,6 +13,8 @@
 #define TONIC_GENERATOR_H
 
 #include "TonicFrames.h"
+#include "ControlGenerator.h"
+
 #include <cmath>
 namespace Tonic {
 
@@ -61,7 +63,10 @@ namespace Tonic {
 
   }
 
-  
+  class Adder;
+  class Subtractor;
+  class Multiplier;
+  class Divider;
   class Generator : public TonicSmartPointer<Tonic_::Generator_>{
 
   public:
@@ -76,6 +81,18 @@ namespace Tonic {
       obj->tick(frames, context);
     }
 
+    Adder operator+ (Generator b);
+    Adder operator+ (float b);
+    Adder operator+ (ControlGenerator b);
+    Subtractor operator- (Generator b);
+    Subtractor operator- (float b);
+    Subtractor operator- (ControlGenerator b);
+    Multiplier operator*(Generator b);
+    Multiplier operator*(float b);
+    Multiplier operator* (ControlGenerator b);
+    Divider operator/ (Generator b);
+    Divider operator/ (float b);
+    Divider operator/ (ControlGenerator b);
   };
   
   template<class GenType>
@@ -85,6 +102,7 @@ namespace Tonic {
       return static_cast<GenType*>(obj);
     }
   public:
+    typedef GenType gen_t;
     TemplatedGenerator() : Generator(new GenType) {}
   };
   
@@ -97,9 +115,8 @@ namespace Tonic {
 #include "FixedValue.h"
 
 #define TONIC_MAKE_GEN_SETTERS(generatorClassName, methodNameInGenerator, methodNameInGenerator_) \
-                                                                                        \
-                                                                                        \
-  generatorClassName& methodNameInGenerator(Generator arg){                             \
+                                                                                      \
+  generatorClassName& methodNameInGenerator(Generator arg){ \
     this->gen()->methodNameInGenerator_(arg);                                           \
     return static_cast<generatorClassName&>(*this);                                     \
   }                                                                                     \

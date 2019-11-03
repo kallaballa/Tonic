@@ -78,21 +78,21 @@ namespace Tonic {
       return gen()->numInputs();
     }
   };
-  
-  static ControlAdder operator+(ControlGenerator a, ControlGenerator b){
-    ControlAdder adder;
-    adder.input(a);
-    adder.input(b);
-    return adder;
-  }
-  
-  static ControlAdder operator+(ControlGenerator a, float b){
-    ControlAdder adder;
-    adder.input(a);
-    adder.input(ControlValue(b));
-    return adder;
-  }
-  
+//
+//  static ControlAdder operator+(ControlGenerator a, ControlGenerator b){
+//    ControlAdder adder;
+//    adder.input(a);
+//    adder.input(b);
+//    return adder;
+//  }
+//
+//  static ControlAdder operator+(ControlGenerator a, float b){
+//    ControlAdder adder;
+//    adder.input(a);
+//    adder.input(ControlValue(b));
+//    return adder;
+//  }
+//
   static ControlAdder operator+(float a, ControlGenerator b){
     ControlAdder adder;
     adder.input(ControlValue(a));
@@ -144,21 +144,21 @@ namespace Tonic {
     TONIC_MAKE_CTRL_GEN_SETTERS(ControlSubtractor, right, setRight);
     
   };
-  
-  static ControlSubtractor operator-(ControlGenerator a, ControlGenerator b){
-    ControlSubtractor subtractor;
-    subtractor.left(a);
-    subtractor.right(b);
-    return subtractor;
-  }
-  
-  static ControlSubtractor operator-(ControlGenerator a, float b){
-    ControlSubtractor subtractor;
-    subtractor.left(a);
-    subtractor.right(ControlValue(b));
-    return subtractor;
-  }
-  
+//
+//  static ControlSubtractor operator-(ControlGenerator a, ControlGenerator b){
+//    ControlSubtractor subtractor;
+//    subtractor.left(a);
+//    subtractor.right(b);
+//    return subtractor;
+//  }
+//
+//  static ControlSubtractor operator-(ControlGenerator a, float b){
+//    ControlSubtractor subtractor;
+//    subtractor.left(a);
+//    subtractor.right(ControlValue(b));
+//    return subtractor;
+//  }
+//
   static ControlSubtractor operator-(float a, ControlGenerator b){
     ControlSubtractor subtractor;
     subtractor.left(ControlValue(a));
@@ -226,21 +226,21 @@ namespace Tonic {
       return gen()->numInputs();
     }
   };
-  
-  static ControlMultiplier operator*(ControlGenerator a, ControlGenerator b){
-    ControlMultiplier mult;
-    mult.input(a);
-    mult.input(b);
-    return mult;
-  }
-  
-  static ControlMultiplier operator*(ControlGenerator a, float b){
-    ControlMultiplier mult;
-    mult.input(a);
-    mult.input(ControlValue(b));
-    return mult;
-  }
-  
+//
+//  static ControlMultiplier operator*(ControlGenerator a, ControlGenerator b){
+//    ControlMultiplier mult;
+//    mult.input(a);
+//    mult.input(b);
+//    return mult;
+//  }
+//
+//  static ControlMultiplier operator*(ControlGenerator a, float b){
+//    ControlMultiplier mult;
+//    mult.input(a);
+//    mult.input(ControlValue(b));
+//    return mult;
+//  }
+//
   static ControlMultiplier operator*(float a, ControlGenerator b){
     ControlMultiplier mult;
     mult.input(ControlValue(a));
@@ -299,21 +299,21 @@ namespace Tonic {
     TONIC_MAKE_CTRL_GEN_SETTERS(ControlDivider, right, setRight);
     
   };
-  
-  static ControlDivider operator/(ControlGenerator a, ControlGenerator b){
-    ControlDivider divider;
-    divider.left(a);
-    divider.right(b);
-    return divider;
-  }
-  
-  static ControlDivider operator/(ControlGenerator a, float b){
-    ControlDivider divider;
-    divider.left(a);
-    divider.right(ControlValue(b));
-    return divider;
-  }
-  
+//
+//  static ControlDivider operator/(ControlGenerator a, ControlGenerator b){
+//    ControlDivider divider;
+//    divider.left(a);
+//    divider.right(b);
+//    return divider;
+//  }
+//
+//  static ControlDivider operator/(ControlGenerator a, float b){
+//    ControlDivider divider;
+//    divider.left(a);
+//    divider.right(ControlValue(b));
+//    return divider;
+//  }
+//
   static ControlDivider operator/(float a, ControlGenerator b){
     ControlDivider divider;
     divider.left(ControlValue(a));

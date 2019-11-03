@@ -101,12 +101,12 @@ namespace Tonic{
   class Synth  : public TemplatedBufferFiller<Tonic_::Synth_> {
     
   public:
-        
+    virtual ~Synth() {
+
+    }
     //! Set the output gen that produces audio for the Synth
     void  setOutputGen(Generator generator){
-      gen()->lockMutex();
       gen()->setOutputGen(generator);
-      gen()->unlockMutex();
     }
     
     //! Returns a reference to outputGen
@@ -117,6 +117,12 @@ namespace Tonic{
     //! Set whether synth uses dynamic limiter to prevent clipping/wrapping. Defaults to true.
     void setLimitOutput(bool shouldLimit) {
       gen()->setLimitOutput(shouldLimit);
+    }
+
+    //! Add a ControlParameter with name "name"
+    ControlParameter addParameter(string name)
+    {
+      return gen()->addParameter(name, 0);
     }
     
     //! Add a ControlParameter with name "name"
@@ -151,9 +157,7 @@ namespace Tonic{
     
     //! Add a ControlGenerator to a list of objects which will be ticked regardless of whether they're part of the synthesis graph or not.
     void addAuxControlGenerator(ControlGenerator generator){
-      gen()->lockMutex();
       gen()->addAuxControlGenerator(generator);
-      gen()->unlockMutex();
     }
     
     //! Add an object which will be notified when a particular ControlChangeNotifier changes value or is triggered.
@@ -197,9 +201,7 @@ namespace Tonic{
     }
     
     void forceNewOutput(){
-      gen()->lockMutex();
       gen()->forceNewOutput();
-      gen()->unlockMutex();
     }
             
   };

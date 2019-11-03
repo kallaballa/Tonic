@@ -217,7 +217,11 @@ namespace Tonic {
       
     }
   }
-  
+  class Adder;
+  class Subtractor;
+  class Multiplier;
+  class Divider;
+
   class RampedValue : public TemplatedGenerator<Tonic_::RampedValue_>{
     
   public:
@@ -228,6 +232,7 @@ namespace Tonic {
       length(initLength);
     }
     
+
     //! Set target value
     /*!
         Changes to target gen input will create a new ramp from current value to target over the current length
@@ -247,7 +252,20 @@ namespace Tonic {
     */
     TONIC_MAKE_CTRL_GEN_SETTERS(RampedValue, value, setValueGen);
 
-    bool isFinished();
+	Adder operator+(Generator b);
+	Adder operator+(float b);
+  Adder operator+(ControlGenerator b);
+	Subtractor operator-(Generator b);
+	Subtractor operator-(float b);
+  Subtractor operator- (ControlGenerator b);
+	Multiplier operator*(Generator b);
+	Multiplier operator*(float b);
+  Multiplier operator* (ControlGenerator b);
+	Divider operator/(Generator b);
+	Divider operator/(float b);
+  Divider operator/ (ControlGenerator b);
+
+	bool isFinished();
 
   };
 }

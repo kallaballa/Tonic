@@ -76,6 +76,19 @@ namespace Tonic {
 
   // forward declaration
   class RampedValue;
+  class ControlAdder;
+  class ControlSubtractor;
+  class ControlMultiplier;
+  class ControlDivider;
+  class ControlChangeNotifier;
+  class ControlDbToLinear;
+  class ControlDelay;
+  class ControlFloor;
+  class ControlMetroDivider;
+  class ControlMidiToFreq;
+  class ControlPrinter;
+  class ControlRecorder;
+  class ControlSnapToScale;
 
   class ControlGenerator : public TonicSmartPointer<Tonic_::ControlGenerator_>{
 
@@ -90,6 +103,23 @@ namespace Tonic {
     // shortcut for creating ramped value
     RampedValue smoothed(float length = 0.05);
     
+    ControlAdder operator+(ControlGenerator b);
+    ControlAdder operator+(float b);
+    ControlSubtractor operator-(ControlGenerator b);
+    ControlSubtractor operator-(float b);
+    ControlMultiplier operator*(ControlGenerator b);
+    ControlMultiplier operator*(float b);
+    ControlDivider operator/(ControlGenerator b);
+    ControlDivider operator/(float b);
+
+//		ControlDbToLinear operator >> (ControlDbToLinear rhs);
+//		ControlDelay operator >> (ControlDelay rhs);
+//		ControlFloor operator >> (ControlFloor rhs);
+//		ControlMetroDivider operator >> (ControlMetroDivider rhs);
+//		ControlMidiToFreq operator >> (ControlMidiToFreq rhs);
+//		ControlPrinter operator >> (ControlPrinter rhs);
+//		ControlRecorder operator >> (ControlRecorder rhs);
+//		ControlSnapToScale operator >> (ControlSnapToScale rhs);
   };
 
   
@@ -102,13 +132,14 @@ namespace Tonic {
     
   public:
     TemplatedControlGenerator() : ControlGenerator(new GenType) {}
-    
   };
 
   
 }
 
 #include "ControlValue.h"
+#include <map>
+
 
 #define TONIC_MAKE_CTRL_GEN_SETTERS(generatorClassName, methodNameInGenerator, methodNameInGenerator_)\
 \

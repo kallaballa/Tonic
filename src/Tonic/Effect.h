@@ -256,7 +256,7 @@ namespace Tonic {
   template<class EffectType, class EffectType_>
   class TemplatedWetDryEffect : public TemplatedGenerator<EffectType_>
   {
-      
+      typedef TemplatedWetDryEffect self_;
     public:
       
       // This cast is not safe - up to implementation to ensure that templated EffectType_ is actually an Effect_ subclass

@@ -61,15 +61,11 @@ namespace Tonic {
   public:
     
     void addInput(BufferFiller input){
-      gen()->lockMutex();
       gen()->addInput(input);
-      gen()->unlockMutex();
     }
     
     void removeInput(BufferFiller input){
-      gen()->lockMutex();
       gen()->removeInput(input);
-      gen()->unlockMutex();
     }
     
   };
